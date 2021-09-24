@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC>
+
+<head>
+
+  <title>analisis</title>
+</head>
+
+
+
+<link rel="stylesheet" href="style/style2.css">
+
+<body>
+  <div class="signupSection">
+
+    <div class="info">
+      <h2>Secretaria de Seguridad P&uacuteblica</h2>
+      <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+
+      <img src="img/estrella.jpg" width="200" height="230">
+      <br><br><br>
+      <p>Polic&iacutea Cibern&eacutetica del Estado</p>
+
+      <br><br><br><br>
+      <a href="../Departamentos.html" id="center-btn">
+        <input type="button" id="join-btn" value="Salir" onClick="llamarApiPOST()" />
+      </a>
+
+      <br>
+    </div>
+    <div class="signupform">
+      <font size="+1">Bit&aacutecora</font>
+
+      <ul class="noBullet">
+        <li>
+          <label for="Folio"></label>
+          <input type="text" class="inputFields" id="ID" name="ID" placeholder="ID" value="1" readonly>
+        </li>
+        <font size="-1"> Fecha Inicio</font>
+        <li>
+          <input type="date" id="FECHA" name="FECHA" class="inputFields" placeholder="Fecha">
+        </li>
+        <li>
+          <input type="time" name="Hr" id="Hr" class="inputfields" placeholder="Ingresar Hora">
+        </li>
+        <li>
+          <input type="text" id="folioPce" name="folioPce" class="inputFields" placeholder="folio Pce" required></input>
+        </li>
+        <li>
+          <input type="text" id="folio911" name="folio911" class="inputFields" placeholder="folio 911"></input>
+        </li>
+        <li>
+          <h4>
+            <p>Facebook</p>
+          </h4>
+          <label for="facebook">Si</label>
+          <input type="radio" name="face" id="face" value="si" onchange="seleccion(1)">
+
+          <label for="facebookNo">No</label>
+          <input type="radio" name="face" id="face" value="No" onchange="seleccion(2)">
+        </li>
+        <li>
+          <input type="text" name="atendio" id="atendio" class="inputfields" value="Yeimi Anahi" readonly>
+        </li>
+        <li>
+          <select name="municipio">
+            <option value="0">Selecciona Municipio</option>
+            <option value="1">Abasolo</option>
+            <option value="2">Acuña</option>
+            <option value="3">Allende</option>
+            <option value="4">Arteaga</option>
+            <option value="5">Candela</option>
+            <option value="6">Castaños</option>
+            <option value="7">Cuatro ciénegas</option>
+            <option value="8">Escobedo</option>
+            <option value="9">Francisco I. Madero</option>
+            <option value="10">Frontera</option>
+            <option value="11">General Cepeda</option>
+            <option value="12">Guerrero</option>
+            <option value="13">Hidalgo</option>
+            <option value="14">Jiménez</option>
+            <option value="15">Juárez</option>
+            <option value="16">Lamadrid</option>
+            <option value="17">Matamoros</option>
+            <option value="18">Monclova</option>
+            <option value="19">Morelos</option>
+            <option value="20">Múzquiz</option>
+            <option value="21">Nadadores</option>
+            <option value="22">Nava</option>
+            <option value="23">Ocampo</option>
+            <option value="24">Parras</option>
+            <option value="25">Piedras Negras</option>
+            <option value="26">Progreso</option>
+            <option value="27">Ramos Arizpe</option>
+            <option value="28">Sabinas</option>
+            <option value="29">Sacramento</option>
+            <option value="30">Saltillo</option>
+            <option value="31">San Buenaventura</option>
+            <option value="32">San Juan de Sabinas</option>
+            <option value="33">San Pedro</option>
+            <option value="34">Sierra Mojada</option>
+            <option value="35">Torreón</option>
+            <option value="36">Viesca</option>
+            <option value="37">Villa Unión</option>
+            <option value="38">Zaragoza</option>
+            <label for="otro">Otros</label>
+            <input type="otro" name="otro" id="otro" placeholder="Otro" class="inputfields">
+          </select>
+        </li>
+        <select name="incidente">
+          <option value="1">Seleccione Incidente</option>
+          <option value="2">Ciberextorsion</option>
+          <option value="3">Ciberfraude</option>
+        </select>
+        <li>
+          <input type="afectado" id="afectado" placeholder="Nombre de afectado" class="inputfields">
+        </li>
+        <li>
+          <input type="number" name="telVictima" id="telVictima" placeholder="Telefono Victima / Lada"
+            class="inputfields">
+        </li>
+        <li>
+          <input type="number" name="telExtorsion" id="telExtorsion" placeholder="Telefono de Extorcion"
+            class="inputfields">
+        </li>
+        <li>
+          <input type="text" name="ctaDep" id="ctaDep" placeholder="Cuenta Deposito" class="inputfields">
+        </li>
+        <li>
+          <input type="text" name="Monto" id="Monto" placeholder="Monto" class="inputfields">
+        </li>
+
+        <li>
+          <textarea type="descripcion" name="descripcion" id="descripcion" cols="30" rows="10" placeholder="Descripción"
+            class="inputfields"></textarea>
+          <textarea name="resultados" id="resultados" cols="30" rows="10" placeholder="Resultados"
+            class="inputfields"></textarea>
+        </li>
+
+
+
+        <li id="center-btn">
+          <input type="submit" name="join" id="join-btn" value="Guardar" onClick="llamarApiPOST()" />
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+<style>
+ body{  overflow: scroll; /* Show horizontal scrollbar */}
+</style>
+
+  <script>
+
+
+    function crearJson() {
+      datosBody = new Object();
+      let ID = document.getElementById("ID").value;
+      datosBody.ID = ID;
+
+      let DEPARTAMENTO = document.getElementById("DEPARTAMENTO").value;
+      datosBody.DEPARTAMENTO = DEPARTAMENTO;
+
+      let NOMBRE = document.getElementById("NOMBRE").value;
+      datosBody.NOMBRE = NOMBRE;
+
+      let FECHA = document.getElementById("FECHA").value;
+      datosBody.FECHA = FECHA;
+      let FECHAFIN = document.getElementById("FECHAFIN").value;
+      datosBody.FECHAFIN = FECHAFIN;
+
+      let COMENTARIO = document.getElementById("COMENTARIO").value;
+      datosBody.COMENTARIO = COMENTARIO;
+      //CAMPOS TODOS
+
+      let datosBodySTR = JSON.stringify(datosBody);
+      return datosBodySTR;
+    }
+    async function llamarApiPOST() {
+      let datos = crearJson();
+      const url = 'http://200.188.139.107:8001/Bitacora/Nuevo'
+      const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+      postear = await fetch(proxyUrl + url, {
+        method: 'POST',
+        body: datos,
+        headers: {
+          'Content-Type': 'application/json',
+
+        }
+      })
+        .then((response) => {
+          alert("Operaci&oacuten exitosa!");
+          return { "Acci&oacuten": "La informaci&oacuten ha sido guardada exitosamente" }
+        })
+        .catch((error) => {
+          alert(error.message)
+          return error
+        });
+
+    }
+  </script>
+</body>
+
+</html>
